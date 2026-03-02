@@ -1,5 +1,4 @@
 {
-  "name": "agu-criminal-database",
-  "version": "1.0.0",
-  "private": true
+  "name": "agu-database",
+  "version": "1.0.0"
 }

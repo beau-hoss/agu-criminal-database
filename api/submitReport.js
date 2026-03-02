@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
 
   const message = {
     content:
-`🚔 **AGU Arrest Report**
+`🚔 **LSPD Arrest Report**
 Officer Badge: ${report.officerBadge || "N/A"}
 Suspect PSN: ${report.psn || "N/A"}
 Date: ${report.date || "N/A"}

@@ -1,27 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const loginBtn = document.getElementById("loginBtn");
+  const submitBtn = document.getElementById("submitBtn");
 
-  if (loginBtn) {
-    loginBtn.addEventListener("click", async () => {
-      const badge = document.getElementById("badge").value.trim();
+  if (submitBtn) {
+    submitBtn.addEventListener("click", async () => {
 
-      const res = await fetch("/api/login", {
+      const report = {
+        psn: document.getElementById("psn").value,
+        datetime: document.getElementById("datetime").value,
+        location: document.getElementById("location").value,
+        vehicle: document.getElementById("vehicle").value,
+        property: document.getElementById("property").value,
+        charges: document.getElementById("charges").value,
+        station: document.getElementById("station").value,
+        log: document.getElementById("log").value,
+        officerBadge: localStorage.getItem("badge")
+      };
+
+      const res = await fetch("/api/submitReport", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ badge })
+        body: JSON.stringify(report)
       });
 
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        localStorage.setItem("badge", badge);
-        window.location.href = "/dashboard.html";
+      if (res.ok) {
+        alert("Report Submitted");
       } else {
-        document.getElementById("error").innerText = "Unauthorized Badge #";
+        alert("Submission failed");
       }
+
     });
   }
 

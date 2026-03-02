@@ -1,4 +1,4 @@
-function submitReport() {
+async function submitReport() {
 
   const report = {
     psn: document.getElementById("psn").value,
@@ -12,35 +12,17 @@ function submitReport() {
     officerBadge: localStorage.getItem("badge")
   };
 
-  let reports = JSON.parse(localStorage.getItem("aguReports")) || [];
-
-  reports.push(report);
-
-  localStorage.setItem("aguReports", JSON.stringify(reports));
-
-  alert("Report Submitted");
-
-  loadReports();
-}
-
-function loadReports() {
-
-  const reports = JSON.parse(localStorage.getItem("aguReports")) || [];
-
-  const container = document.getElementById("recordsList");
-  container.innerHTML = "";
-
-  reports.forEach(r => {
-    container.innerHTML += `
-      <div class="record">
-        <p><strong>PSN:</strong> ${r.psn}</p>
-        <p><strong>Date:</strong> ${r.datetime}</p>
-        <p><strong>Officer Badge:</strong> ${r.officerBadge}</p>
-        <p><strong>Charges:</strong> ${r.charges}</p>
-        <hr/>
-      </div>
-    `;
+  const res = await fetch("/api/submitReport", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(report)
   });
-}
 
-document.addEventListener("DOMContentLoaded", loadReports);
+  if (res.ok) {
+    alert("Report Successfully Logged to AGU Database (Discord)");
+  } else {
+    alert("Submission failed");
+  }
+}

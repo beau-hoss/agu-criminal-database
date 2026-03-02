@@ -63,7 +63,7 @@ if (submitBtn) {
       const data = await res.json();
 
       if (data.success) {
-        alert("Report Submitted to Discord");
+        alert("Report Submitted to Database");
       } else {
         alert("Submission Failed");
       }
@@ -75,3 +75,4 @@ if (submitBtn) {
 
   });
 }
+

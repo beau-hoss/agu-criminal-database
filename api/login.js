@@ -4,8 +4,7 @@ module.exports = (req, res) => {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const approvedBadges = ["6039",
-    "416",
+  const approvedBadges = ["416",
     "10194",
     "928",
     "491",
@@ -51,4 +50,5 @@ module.exports = (req, res) => {
 
   return res.status(401).json({ success: false });
 };
+
 

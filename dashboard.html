@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AGU Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>AGU Criminal Records</h1>
+
+  <div class="form-section">
+    <h2>Submit Arrest Report</h2>
+
+    <input type="text" id="psn" placeholder="Suspect PSN Name">
+    <input type="datetime-local" id="datetime">
+    <input type="text" id="location" placeholder="Location">
+    <input type="text" id="vehicle" placeholder="Suspect Vehicle">
+    <input type="text" id="property" placeholder="Suspect Property">
+    <input type="text" id="charges" placeholder="Charges">
+    <input type="text" id="station" placeholder="Booking Station">
+    <textarea id="log" placeholder="Event Log Details"></textarea>
+
+    <button onclick="submitReport()">Submit Report</button>
+  </div>
+
+  <div class="records">
+    <h2>Database Records</h2>
+    <div id="recordsList"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

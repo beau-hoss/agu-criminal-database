@@ -7,10 +7,6 @@ module.exports = (req, res) => {
   const approvedBadges = ["1001", "1002", "2001", "3007"];
   const { badge } = req.body;
 
-  if (!badge) {
-    return res.status(400).json({ success: false });
-  }
-
   if (approvedBadges.includes(String(badge).trim())) {
     return res.status(200).json({ success: true });
   }

@@ -3,7 +3,7 @@ module.exports = (req, res) => {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const approvedBadges = ["1001", "1002", "2001", "3007"];
+  const approvedBadges = ["918", "1002", "2001", "3007"];
   const { badge } = req.body;
 
   if (approvedBadges.includes(String(badge).trim())) {
@@ -12,3 +12,4 @@ module.exports = (req, res) => {
     return res.status(401).json({ success: false });
   }
 };
+

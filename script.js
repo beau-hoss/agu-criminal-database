@@ -1,4 +1,5 @@
-async function submitReport() {
+function submitReport() {
+
   const report = {
     psn: document.getElementById("psn").value,
     datetime: document.getElementById("datetime").value,
@@ -11,23 +12,20 @@ async function submitReport() {
     officerBadge: localStorage.getItem("badge")
   };
 
-  const res = await fetch("/api/reports", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(report)
-  });
+  let reports = JSON.parse(localStorage.getItem("aguReports")) || [];
 
-  if (res.ok) {
-    alert("Report Submitted");
-    loadReports(); // Reload database
-  } else {
-    alert("Submission failed");
-  }
+  reports.push(report);
+
+  localStorage.setItem("aguReports", JSON.stringify(reports));
+
+  alert("Report Submitted");
+
+  loadReports();
 }
 
-async function loadReports() {
-  const res = await fetch("/api/reports");
-  const reports = await res.json();
+function loadReports() {
+
+  const reports = JSON.parse(localStorage.getItem("aguReports")) || [];
 
   const container = document.getElementById("recordsList");
   container.innerHTML = "";
@@ -45,7 +43,4 @@ async function loadReports() {
   });
 }
 
-// Load reports on dashboard load
-if (window.location.pathname.includes("dashboard")) {
-  document.addEventListener("DOMContentLoaded", loadReports);
-}
+document.addEventListener("DOMContentLoaded", loadReports);

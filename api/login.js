@@ -7,6 +7,7 @@ module.exports = (req, res) => {
   const approvedBadges = ["416",
     "10194",
     "928",
+    "148",                          
     "491",
     "824",
     "515",
@@ -50,5 +51,6 @@ module.exports = (req, res) => {
 
   return res.status(401).json({ success: false });
 };
+
 
 

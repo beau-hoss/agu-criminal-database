@@ -12,7 +12,6 @@ module.exports = (req, res) => {
     "928",
     "148",                          
     "491",
-    "824",
     "515",
     "741",
     "9951",
@@ -37,7 +36,6 @@ module.exports = (req, res) => {
     "6767",
     "568",
     "2006",
-    "918",
     "3690",
     "999",
     "10194",
@@ -54,6 +52,7 @@ module.exports = (req, res) => {
 
   return res.status(401).json({ success: false });
 };
+
 
 
 
